@@ -1130,6 +1130,7 @@ GameObject:
   - component: {fileID: 1837083960}
   - component: {fileID: 1837083959}
   - component: {fileID: 1837083958}
+  - component: {fileID: 1837083961}
   m_Layer: 5
   m_Name: LoginButton
   m_TagString: Untagged
@@ -1196,7 +1197,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837083959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837083961}
+        m_MethodName: OnLoginButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1837083959
@@ -1236,3 +1248,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837083956}
   m_CullTransparentMesh: 0
+--- !u!114 &1837083961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837083956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45dae85ae2bd2b40b8a42f2085a9b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
