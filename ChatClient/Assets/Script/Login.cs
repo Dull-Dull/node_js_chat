@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 
-
-
 public class Login : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -19,6 +16,4 @@ public class Login : MonoBehaviour {
 		GameObject sockIoSession = new GameObject( "SockIoSession" );
 		sockIoSession.AddComponent<SocketIoSession>();		
 	}
-
-	
 }

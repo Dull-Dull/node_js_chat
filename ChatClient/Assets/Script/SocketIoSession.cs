@@ -1,26 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Quobject.SocketIoClientDotNet.Client;
 
-public class SocketIoSession : MonoBehaviour {
+public partial class SocketIoSession : MonoBehaviour {
+
+	void Awake()
+	{
+		DontDestroyOnLoad( this.gameObject );
+	}
 
 	void Start () {
-		Debug.Log( "ButtonClicked" );
-		sock = IO.Socket( "http://" + GameObject.Find( "IpInput" ).GetComponent<InputField>().text + ":19900" );
+		ip = GameObject.Find( "IpInput" ).GetComponent<InputField>().text;
+		sockio = new SockIoManager( this, ip, port );
+	}
 
-		sock.On( Socket.EVENT_CONNECT, () =>
-		{
-			sock.Emit( "login", "Hello Socket Io" );
-		} );
+	void Update()
+	{
+		sockio.RunCallback();
 	}
 
 	void OnDestroy()
 	{
-		if( sock != null )
-			sock.Disconnect();
+		sockio.Disconnect();
 	}
 
-	Socket sock = null;
+	public string ip = "";
+	public int port = 19900;
+
+	private SockIoManager sockio = null;
 }
