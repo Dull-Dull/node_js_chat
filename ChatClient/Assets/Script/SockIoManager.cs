@@ -47,7 +47,7 @@ class SockIoCallbackAttribute : Attribute
 
 }
 
-class SockIoManager
+public class SockIoManager
 {
 	public SockIoManager( object component, string ip, int port )
 	{

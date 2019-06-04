@@ -61,18 +61,21 @@ public partial class SocketIoSession
 	public void user_login( string userId )
 	{
 		Debug.Log( "user_login" );
-		Debug.Log( userId );
+
+		GameObject.Find( "ChattingRoll" ).GetComponent<ChattingRoll>().AddUser( userId );
 	}
 
 	[SockIoCallback]
 	public void user_logout( string userId )
 	{
+		Debug.Log( "user_logout" );
 
+		GameObject.Find( "ChattingRoll" ).GetComponent<ChattingRoll>().RemoveUser( userId );
 	}
 
 	[SockIoCallback]
 	public void chat_message( string message )
 	{
-
+		GameObject.Find( "ChattingRoll" ).GetComponent<ChattingRoll>().AppendMsg( message );
 	}
 }

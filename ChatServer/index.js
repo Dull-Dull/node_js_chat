@@ -2,11 +2,7 @@ var express = require('express');
 var app = express();
 
 var http = require('http').createServer( app );
-var io = require('socket.io')(http, {
-    pingInterval: 10000000,
-    pingTimeout: 5000,
-    cookie: false
-});
+var io = require('socket.io')(http);
 
 var userList = [];
 

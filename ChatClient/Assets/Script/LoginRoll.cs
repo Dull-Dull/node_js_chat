@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Login : MonoBehaviour {
+public class LoginRoll : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

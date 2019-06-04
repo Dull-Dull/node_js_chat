@@ -26,6 +26,11 @@ public partial class SocketIoSession : MonoBehaviour {
 		sockio.Disconnect();
 	}
 
+	public SockIoManager GetSocketIo()
+	{
+		return sockio;
+	}
+
 	public string ip = "";
 	public int port = 19900;
 
