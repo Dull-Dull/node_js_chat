@@ -21,11 +21,6 @@ public partial class SocketIoSession : MonoBehaviour {
 		sockio.RunCallback();
 	}
 
-	void OnDestroy()
-	{
-		sockio.Disconnect();
-	}
-
 	public SockIoManager GetSocketIo()
 	{
 		return sockio;

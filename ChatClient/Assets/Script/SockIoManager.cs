@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Quobject.SocketIoClientDotNet.Client;
+using socket.io;
 using System.Reflection;
 
 interface ISockIoCallback
@@ -96,21 +96,12 @@ public class SockIoManager
 
 	private void Connect( string ip, int port )
 	{
-		IO.Options options = new IO.Options();
-		options.TimestampRequests = true;
-		//options.
-		sock = IO.Socket( "http://" + ip + ":" + port.ToString(), options );
+		sock = Socket.Connect( "http://" + ip + ":" + port.ToString() );
 	}
 
-	public void Disconnect()
+	public void Emit( string  eventString, string arg )
 	{
-		if( sock != null )
-			sock.Disconnect();
-	}
-
-	public void Emit( string  eventString, params object[] args )
-	{
-		sock.Emit( eventString, args );
+		sock.Emit( eventString, arg );
 	}
 
 	public void RunCallback()

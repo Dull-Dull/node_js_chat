@@ -7,7 +7,7 @@ public class ChattingRoll : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		userList = new List<string>();
 	}
 	
 	// Update is called once per frame
@@ -17,8 +17,8 @@ public class ChattingRoll : MonoBehaviour {
 
 	public void OnMsgSendButtonClick()
 	{
-		string msg = MsgInputField.GetComponent<Text>().text;
-		MsgInputField.GetComponent<Text>().text = "";
+		string msg = MsgInputField.GetComponent<InputField>().text;
+		MsgInputField.GetComponent<InputField>().text = "";
 
 		GameObject.Find( "SockIoSession" ).GetComponent<SocketIoSession>().GetSocketIo().Emit( "chat_message", msg );
 	}
@@ -33,7 +33,7 @@ public class ChattingRoll : MonoBehaviour {
 			text += id + "\n";
 		}
 
-		UserListField.GetComponent<Text>().text = text;
+		UserListField.GetComponent<InputField>().text = text;
 	}
 
 	public void RemoveUser( string userId )
@@ -46,15 +46,15 @@ public class ChattingRoll : MonoBehaviour {
 			text += id + "\n";
 		}
 
-		UserListField.GetComponent<Text>().text = text;
+		UserListField.GetComponent<InputField>().text = text;
 	}
 
 	public void AppendMsg( string msg )
 	{
-		ChattingField.GetComponent<Text>().text += "\n" + msg;
+		ChattingField.GetComponent<InputField>().text += "\n" + msg;
 	}
 
-	private List<string> userList;
+	private List<string> userList = null;
 
 	public GameObject UserListField;
 	public GameObject ChattingField;

@@ -9,23 +9,9 @@ using UnityEngine.SceneManagement;
 public partial class SocketIoSession
 {
 	[SockIoCallback]
-	public void ping()
-	{
-		sockio.Emit( "pong" );
-		Debug.Log( "Recv Ping " );
-	}
-
-	[SockIoCallback]
-	public void pong()
-	{
-		//sockio.Emit( "pong" );
-		Debug.Log( "Recv pong " );
-	}
-
-	[SockIoCallback]
 	public void connect()
 	{
-		string userId = GameObject.Find( "UserIdInput" ).GetComponent<InputField>().text;
+		string userId = GameObject.Find("UserIdInput").GetComponent<InputField>().text;
 		sockio.Emit( "req_login", userId );
 
 		Debug.Log( "connect Session" );
@@ -38,15 +24,9 @@ public partial class SocketIoSession
 	}
 
 	[SockIoCallback]
-	public void reconnect()
+	public void res_login( string result )
 	{
-		Debug.Log( "reconnect" );
-	}
-
-	[SockIoCallback]
-	public void res_login()
-	{
-		Debug.Log( "login" );
+		Debug.Log( "login : " + result);
 
 		SceneManager.LoadScene( "Chatting" );
 	}
